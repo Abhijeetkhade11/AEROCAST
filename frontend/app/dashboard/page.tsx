@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { AlertTriangle, TrendingUp, Clock, Plane, Building2, Users, MapPin, CloudRain, BarChart3, Database, ArrowRight } from 'lucide-react';
 import { api } from '@/lib/api';
-import LiveRadarTracker from '@/app/components/LiveRadarTracker';
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
 } from 'recharts';
@@ -244,11 +243,6 @@ export default function OverviewPage() {
             <KPICard key={k.label} {...k} delay={i * 0.07} />
           ))
         )}
-      </div>
-
-      {/* Real-Time Live Flight Delay Radar Stream */}
-      <div style={{ marginBottom: 28 }}>
-        <LiveRadarTracker />
       </div>
 
       {/* Analytics Data Sections */}

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PlaneTakeoff, ArrowRight, AlertTriangle, TrendingUp, TrendingDown, Info, RotateCcw, Sparkles, Clock, Calendar, ArrowLeftRight, ShieldCheck, Cpu, Compass, Search, ChevronDown, Check, CloudRain, Wind, Thermometer, Eye } from 'lucide-react';
 import { api } from '@/lib/api';
 import type { Airport, Airline, PredictResponse, RiskCategory, ShapFactor } from '@/lib/types';
-import LiveRadarTracker from '@/app/components/LiveRadarTracker';
 
 // ── Analysis Steps ────────────────────────────────────────────────────────
 const ANALYSIS_STEPS = [
@@ -1112,11 +1111,6 @@ export default function PredictorPage() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* ── Real-Time Live Flight Radar Stream ──────────────────────── */}
-      <div style={{ marginBottom: 28 }}>
-        <LiveRadarTracker />
       </div>
 
       {/* ── Main Layout: Loader or Result or Form ─────────────────────── */}
