@@ -1,8 +1,8 @@
 {
   "model_name": "ridge",
   "model_type": "regressor",
-  "training_period": "2023-01-01 \u2014 2024-07-08",
-  "test_period": "2024-09-16 \u2014 2024-12-30",
+  "training_period": "2023-01-01 \u2014 2024-07-05",
+  "test_period": "2024-09-13 \u2014 2024-12-30",
   "features": [
     "sched_dep_hour",
     "day_of_week",
@@ -21,9 +21,9 @@
     "wx_visibility"
   ],
   "target": "DEP_DELAY (minutes, clipped at 0)",
-  "mae": 18.01,
-  "rmse": 26.52,
-  "r2": 0.0066,
-  "test_size": 739,
-  "trained_at": "2026-08-19T19:26:32.472449+00:00"
+  "mae": 18.98,
+  "rmse": 28.68,
+  "r2": 0.0074,
+  "test_size": 3693,
+  "trained_at": "2026-09-07T16:40:55.439113+00:00"
 }

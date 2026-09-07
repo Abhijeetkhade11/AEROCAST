@@ -34,3 +34,9 @@ htmlcov/
 
 # System generated logs
 *.log
+
+# Data files & Raw datasets
+T_ONTIME_REPORTING*.csv
+backend/data/raw/T_ONTIME_REPORTING*.csv
+backend/data/interim/*.parquet
+backend/data/processed/*.parquet

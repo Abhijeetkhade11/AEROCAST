@@ -1,38 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import dynamic from 'next/dynamic';
-import { PlaneTakeoff, BarChart3, CloudRain, MapPin, FlaskConical, Database, ArrowRight, Sparkles, ShieldCheck, Cpu } from 'lucide-react';
-
-// Dynamic import for Photorealistic 3D Commercial Airplane Scene (client-side render only)
-const RealisticAirplane3D = dynamic(() => import('@/app/components/RealisticAirplane3D'), {
-  ssr: false,
-  loading: () => (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e0eeff' }}>
-      <div style={{ fontSize: 14, color: '#2563eb', fontFamily: 'Space Grotesk', fontWeight: 600 }}>
-        Loading High-Altitude Commercial Airliner Scene...
-      </div>
-    </div>
-  ),
-});
+import { BarChart3, ArrowRight, Activity, Zap } from 'lucide-react';
 
 function StatBadge({ value, label }: { value: string; label: string }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
       <span
         style={{
           fontFamily: 'Space Grotesk',
           fontSize: '1.8rem',
           fontWeight: 700,
-          color: '#0f172a',
+          color: '#0F172A',
           letterSpacing: '-0.02em',
         }}
       >
         {value}
       </span>
-      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#64748b' }}>
+      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#64748B' }}>
         {label}
       </span>
     </div>
@@ -43,19 +29,34 @@ export default function LandingPage() {
   const router = useRouter();
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 450], [1, 0]);
-  const heroY = useTransform(scrollY, [0, 450], [0, -50]);
+  const heroY = useTransform(scrollY, [0, 450], [0, -40]);
 
   return (
     <div
       style={{
-        background: 'linear-gradient(180deg, #e0eeff 0%, #f0f7ff 35%, #ffffff 100%)',
+        background: 'linear-gradient(180deg, #F0F7FF 0%, #F8FAFC 35%, #FFFFFF 100%)',
         minHeight: '100vh',
-        color: '#0f172a',
+        color: '#0F172A',
         fontFamily: 'var(--font-body)',
         overflowX: 'hidden',
       }}
     >
-      {/* ── Glassmorphism Edge-to-Edge Header ──────────────────────────── */}
+      {/* Background Decorative Ambient Glow */}
+      <div
+        style={{
+          position: 'fixed',
+          top: -100,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '90vw',
+          height: 500,
+          background: 'radial-gradient(ellipse at top, rgba(37, 99, 235, 0.12) 0%, rgba(6, 182, 212, 0.06) 50%, rgba(255, 255, 255, 0) 80%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Light Glassmorphism Header */}
       <header
         style={{
           position: 'fixed',
@@ -64,38 +65,38 @@ export default function LandingPage() {
           right: 0,
           height: 68,
           zIndex: 50,
-          background: 'rgba(255, 255, 255, 0.75)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
+          background: 'rgba(255, 255, 255, 0.85)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           borderBottom: '1px solid rgba(226, 232, 240, 0.8)',
           padding: '0 40px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          boxShadow: '0 10px 30px -10px rgba(15, 23, 42, 0.05)',
+          boxShadow: '0 4px 20px rgba(15, 23, 42, 0.03)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div
             style={{
-              width: 34,
-              height: 34,
-              background: 'linear-gradient(135deg, #2563eb, #06b6d4)',
-              borderRadius: 9,
+              width: 36,
+              height: 36,
+              background: 'linear-gradient(135deg, #2563EB, #06B6D4)',
+              borderRadius: 10,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 14px rgba(37, 99, 235, 0.25)',
+              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.25)',
             }}
           >
-            <span style={{ color: 'white', fontSize: 15, fontWeight: 700 }}>✈</span>
+            <Activity size={20} color="#FFFFFF" />
           </div>
           <div>
-            <div style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 17, color: '#0f172a', letterSpacing: '-0.01em' }}>
+            <div style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 18, color: '#0F172A', letterSpacing: '-0.01em' }}>
               AEROINTEL
             </div>
-            <div style={{ fontSize: 9, color: '#64748b', letterSpacing: '0.06em', fontWeight: 600 }}>
-              AVIATION INTELLIGENCE
+            <div style={{ fontSize: 9, color: '#2563EB', letterSpacing: '0.08em', fontWeight: 700 }}>
+              AVIATION INTELLIGENCE PLATFORM
             </div>
           </div>
         </div>
@@ -104,74 +105,78 @@ export default function LandingPage() {
           <button
             onClick={() => router.push('/dashboard')}
             className="btn-secondary"
-            style={{ padding: '9px 20px', fontSize: 13, borderRadius: 100 }}
+            style={{
+              padding: '9px 20px',
+              fontSize: 13,
+              borderRadius: 8,
+              background: '#FFFFFF',
+              border: '1px solid #CBD5E1',
+              color: '#0F172A',
+              fontWeight: 500,
+            }}
           >
             Aviation Data Platform
           </button>
           <button
             onClick={() => router.push('/dashboard/predictor')}
             className="btn-primary"
-            style={{ padding: '9px 22px', fontSize: 13, borderRadius: 100 }}
+            style={{
+              padding: '9px 22px',
+              fontSize: 13,
+              borderRadius: 8,
+              background: 'linear-gradient(135deg, #2563EB, #06B6D4)',
+              color: '#FFFFFF',
+              fontWeight: 600,
+              boxShadow: '0 4px 14px rgba(37, 99, 235, 0.25)',
+            }}
           >
             Use Flight Predictor <ArrowRight size={14} />
           </button>
         </div>
       </header>
 
-      {/* ── Full-Screen Hero Section with Photorealistic 3D Sky Plane ───── */}
+      {/* Light Hero Section */}
       <section
         style={{
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          minHeight: '85vh',
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          overflow: 'hidden',
+          paddingTop: 120,
+          paddingBottom: 60,
+          zIndex: 1,
         }}
       >
-        {/* Full-Screen Photorealistic Commercial Airplane Canvas */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: 1,
-          }}
-        >
-          <RealisticAirplane3D />
-        </div>
-
-        {/* Hero Overlay Text */}
         <motion.div
-          style={{ opacity: heroOpacity, y: heroY, position: 'relative', zIndex: 10, pointerEvents: 'none' }}
+          style={{ opacity: heroOpacity, y: heroY, position: 'relative', zIndex: 10 }}
           className="flex flex-col items-center text-center"
         >
-          {/* Status Eyebrow Badge */}
+          {/* Eyebrow Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
               padding: '6px 20px',
               background: 'rgba(255, 255, 255, 0.9)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              border: '1.5px solid rgba(37, 99, 235, 0.25)',
+              border: '1px solid rgba(37, 99, 235, 0.2)',
               borderRadius: 100,
-              marginBottom: 24,
-              boxShadow: '0 8px 24px rgba(37, 99, 235, 0.12)',
+              marginBottom: 28,
+              boxShadow: '0 4px 15px rgba(37, 99, 235, 0.08)',
             }}
           >
-            <div className="status-dot" style={{ width: 6, height: 6, background: '#2563eb' }} />
+            <div className="status-dot" style={{ width: 8, height: 8, background: '#2563EB', borderRadius: '50%' }} />
             <span
               style={{
                 fontSize: 11,
                 fontWeight: 700,
-                letterSpacing: '0.1em',
-                color: '#1e40af',
+                letterSpacing: '0.12em',
+                color: '#1E40AF',
                 textTransform: 'uppercase',
               }}
             >
@@ -182,46 +187,91 @@ export default function LandingPage() {
           {/* Main Headline */}
           <motion.h1
             className="text-hero"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.8 }}
-            style={{ maxWidth: 980, padding: '0 24px', textShadow: '0 4px 30px rgba(255,255,255,0.9)' }}
+            transition={{ delay: 0.25, duration: 0.7 }}
+            style={{
+              maxWidth: 900,
+              padding: '0 24px',
+              fontSize: '3.6rem',
+              fontWeight: 800,
+              letterSpacing: '-0.03em',
+              lineHeight: 1.1,
+              color: '#0F172A',
+            }}
           >
-            Predict the Delay.
+            Predict Flight Delays.
             <br />
             <span
               style={{
-                background: 'linear-gradient(135deg, #1d4ed8, #0284c7)',
+                background: 'linear-gradient(135deg, #1D4ED8 0%, #0284C7 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}
             >
-              Understand the Skies.
+              Understand Sky Disruptions.
             </span>
           </motion.h1>
 
-
-
-          {/* Interactive Dual CTAs */}
-          <motion.div
-            style={{ marginTop: 36, pointerEvents: 'auto', display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            style={{
+              fontSize: 18,
+              color: '#475569',
+              maxWidth: 640,
+              margin: '24px auto 0',
+              lineHeight: 1.6,
+              fontWeight: 400,
+            }}
+          >
+            High-precision Machine Learning framework powered by BTS flight history and Open-Meteo weather parameters with real-time SHAP explainability.
+          </motion.p>
+
+          {/* Dual CTAs */}
+          <motion.div
+            style={{ marginTop: 36, display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.6 }}
           >
             <button
               onClick={() => router.push('/dashboard/predictor')}
               className="btn-primary"
-              style={{ padding: '14px 36px', fontSize: 15, letterSpacing: '0.02em', borderRadius: 12 }}
+              style={{
+                padding: '14px 36px',
+                fontSize: 15,
+                fontWeight: 600,
+                letterSpacing: '0.02em',
+                borderRadius: 10,
+                background: 'linear-gradient(135deg, #2563EB, #06B6D4)',
+                boxShadow: '0 8px 24px rgba(37, 99, 235, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+              }}
             >
-              <PlaneTakeoff size={18} />
+              <Zap size={18} />
               USE FLIGHT PREDICTOR
             </button>
             <button
               onClick={() => router.push('/dashboard')}
               className="btn-secondary"
-              style={{ padding: '14px 36px', fontSize: 15, borderRadius: 12 }}
+              style={{
+                padding: '14px 36px',
+                fontSize: 15,
+                fontWeight: 600,
+                borderRadius: 10,
+                background: '#FFFFFF',
+                border: '1px solid #CBD5E1',
+                color: '#0F172A',
+                boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+              }}
             >
               <BarChart3 size={18} />
               EXPLORE AVIATION DATA
@@ -232,40 +282,39 @@ export default function LandingPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.95, duration: 0.8 }}
+            transition={{ delay: 0.7, duration: 0.7 }}
             style={{
               display: 'flex',
-              gap: 24,
+              gap: 32,
               flexWrap: 'wrap',
               justifyContent: 'center',
-              marginTop: 48,
-              padding: '18px 24px',
-              background: 'rgba(255, 255, 255, 0.92)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1.5px solid rgba(203, 213, 225, 0.8)',
-              borderRadius: 20,
-              boxShadow: '0 20px 45px -15px rgba(15, 23, 42, 0.08)',
-              pointerEvents: 'auto',
+              marginTop: 56,
+              padding: '20px 36px',
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: 16,
+              boxShadow: '0 10px 30px rgba(15, 23, 42, 0.06)',
             }}
           >
             <StatBadge value="50+" label="US Airports" />
-            <div style={{ width: 1, background: '#cbd5e1' }} />
+            <div style={{ width: 1, background: '#E2E8F0' }} />
             <StatBadge value="12" label="Carriers" />
-            <div style={{ width: 1, background: '#cbd5e1' }} />
+            <div style={{ width: 1, background: '#E2E8F0' }} />
             <StatBadge value="Real" label="BTS Records" />
-            <div style={{ width: 1, background: '#cbd5e1' }} />
+            <div style={{ width: 1, background: '#E2E8F0' }} />
             <StatBadge value="SHAP" label="Explainability" />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* ── Two Completely Separate Experiences ─────────────────────────── */}
+      {/* Two Independent Portals */}
       <section
         style={{
-          padding: '110px 24px',
+          padding: '90px 24px',
           maxWidth: 1280,
           margin: '0 auto',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <motion.div
@@ -275,16 +324,16 @@ export default function LandingPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-label" style={{ marginBottom: 12, color: '#2563eb' }}>
-            System Architecture
+          <p className="text-label" style={{ marginBottom: 8, color: '#2563EB', fontWeight: 700, letterSpacing: '0.08em' }}>
+            SYSTEM ARCHITECTURE
           </p>
           <h2
             className="text-display"
-            style={{ color: '#0f172a', marginBottom: 16 }}
+            style={{ color: '#0F172A', marginBottom: 16, fontSize: '2.4rem', fontWeight: 700 }}
           >
             Two Independent Portals
           </h2>
-          <p style={{ color: '#475569', fontSize: 16, maxWidth: 560, margin: '0 auto' }}>
+          <p style={{ color: '#475569', fontSize: 16, maxWidth: 580, margin: '0 auto', lineHeight: 1.6 }}>
             AeroIntel keeps user-focused flight predictions completely separated from raw statistical database analytics.
           </p>
         </motion.div>
@@ -292,26 +341,26 @@ export default function LandingPage() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
             gap: 28,
-            marginTop: 56,
+            marginTop: 48,
           }}
         >
           {/* Card 1: Consumer Flight Predictor */}
           <motion.div
-            className="card"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.95), rgba(239,246,255,0.8))',
-              border: '1.5px solid rgba(37, 99, 235, 0.3)',
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%)',
+              border: '1px solid rgba(37, 99, 235, 0.2)',
+              borderRadius: 16,
               padding: '36px 32px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              boxShadow: '0 20px 40px -15px rgba(37, 99, 235, 0.12)',
+              boxShadow: '0 12px 32px rgba(37, 99, 235, 0.08)',
             }}
           >
             <div>
@@ -320,17 +369,18 @@ export default function LandingPage() {
                   fontSize: 10,
                   fontWeight: 700,
                   letterSpacing: '0.08em',
-                  color: '#2563eb',
+                  color: '#2563EB',
                   padding: '4px 12px',
                   borderRadius: 100,
-                  background: 'rgba(37, 99, 235, 0.12)',
+                  background: 'rgba(37, 99, 235, 0.1)',
+                  border: '1px solid rgba(37, 99, 235, 0.2)',
                   display: 'inline-block',
                   marginBottom: 20,
                 }}
               >
                 EXPERIENCE 1 · USER PREDICTOR TOOL
               </div>
-              <h3 className="text-headline" style={{ fontSize: '1.5rem', marginBottom: 12, color: '#0f172a' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 12, color: '#0F172A' }}>
                 Flight Delay Predictor
               </h3>
               <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.65, marginBottom: 24 }}>
@@ -345,12 +395,12 @@ export default function LandingPage() {
                   { title: 'Pre-Flight Feature Isolation', desc: 'Strictly zero target leakage from post-event fields' },
                 ].map((item) => (
                   <div key={item.title} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                    <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(37, 99, 235, 0.1)', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>
+                    <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(37, 99, 235, 0.12)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>
                       ✓
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a' }}>{item.title}</div>
-                      <div style={{ fontSize: 12, color: '#64748b' }}>{item.desc}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0F172A' }}>{item.title}</div>
+                      <div style={{ fontSize: 12, color: '#64748B' }}>{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -360,7 +410,7 @@ export default function LandingPage() {
             <button
               onClick={() => router.push('/dashboard/predictor')}
               className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', padding: '14px', borderRadius: 12 }}
+              style={{ width: '100%', justifyContent: 'center', padding: '14px', borderRadius: 10, background: 'linear-gradient(135deg, #2563EB, #06B6D4)', color: '#FFFFFF', fontWeight: 600, boxShadow: '0 4px 14px rgba(37, 99, 235, 0.2)' }}
             >
               LAUNCH PREDICTOR TOOL <ArrowRight size={16} />
             </button>
@@ -368,18 +418,19 @@ export default function LandingPage() {
 
           {/* Card 2: Aviation Data Platform */}
           <motion.div
-            className="card"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              background: '#ffffff',
-              border: '1.5px solid #cbd5e1',
+              background: '#FFFFFF',
+              border: '1px solid #CBD5E1',
+              borderRadius: 16,
               padding: '36px 32px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
+              boxShadow: '0 12px 32px rgba(15, 23, 42, 0.05)',
             }}
           >
             <div>
@@ -388,18 +439,18 @@ export default function LandingPage() {
                   fontSize: 10,
                   fontWeight: 700,
                   letterSpacing: '0.08em',
-                  color: '#64748b',
+                  color: '#475569',
                   padding: '4px 12px',
                   borderRadius: 100,
-                  background: '#f1f5f9',
+                  background: '#F1F5F9',
                   display: 'inline-block',
                   marginBottom: 20,
-                  border: '1px solid #cbd5e1',
+                  border: '1px solid #CBD5E1',
                 }}
               >
                 EXPERIENCE 2 · AVIATION DATA PLATFORM
               </div>
-              <h3 className="text-headline" style={{ fontSize: '1.5rem', marginBottom: 12, color: '#0f172a' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: 12, color: '#0F172A' }}>
                 Aviation Intelligence & Data
               </h3>
               <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.65, marginBottom: 24 }}>
@@ -414,12 +465,12 @@ export default function LandingPage() {
                   { title: 'ML Engineering Lab', desc: 'ROC-AUC, Precision, Recall, F1, MAE & SHAP metrics' },
                 ].map((item) => (
                   <div key={item.title} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                    <div style={{ width: 18, height: 18, borderRadius: '50%', background: '#f1f5f9', color: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>
+                    <div style={{ width: 18, height: 18, borderRadius: '50%', background: '#F1F5F9', color: '#0F172A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>
                       ✓
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0f172a' }}>{item.title}</div>
-                      <div style={{ fontSize: 12, color: '#64748b' }}>{item.desc}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#0F172A' }}>{item.title}</div>
+                      <div style={{ fontSize: 12, color: '#64748B' }}>{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -429,7 +480,7 @@ export default function LandingPage() {
             <button
               onClick={() => router.push('/dashboard')}
               className="btn-secondary"
-              style={{ width: '100%', justifyContent: 'center', padding: '14px', borderRadius: 12 }}
+              style={{ width: '100%', justifyContent: 'center', padding: '14px', borderRadius: 10, background: '#FFFFFF', border: '1px solid #CBD5E1', color: '#0F172A', fontWeight: 600 }}
             >
               EXPLORE AVIATION DATA <ArrowRight size={16} />
             </button>
@@ -437,13 +488,15 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── ML Pipeline Flow Section ───────────────────────────────────── */}
+      {/* Production ML Pipeline Architecture */}
       <section
         style={{
-          padding: '90px 24px',
-          background: '#ffffff',
-          borderTop: '1px solid #e2e8f0',
-          borderBottom: '1px solid #e2e8f0',
+          padding: '80px 24px',
+          background: '#F8FAFC',
+          borderTop: '1px solid #E2E8F0',
+          borderBottom: '1px solid #E2E8F0',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -453,10 +506,10 @@ export default function LandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <p className="text-label" style={{ marginBottom: 12, color: '#2563eb' }}>
-              Data Engineering Architecture
+            <p className="text-label" style={{ marginBottom: 8, color: '#2563EB', fontWeight: 700, letterSpacing: '0.08em' }}>
+              DATA ENGINEERING ARCHITECTURE
             </p>
-            <h2 className="text-display" style={{ color: '#0f172a', marginBottom: 44 }}>
+            <h2 style={{ color: '#0F172A', marginBottom: 40, fontSize: '2rem', fontWeight: 700 }}>
               Production ML Pipeline Architecture
             </h2>
           </motion.div>
@@ -475,17 +528,17 @@ export default function LandingPage() {
             transition={{ delay: 0.2 }}
           >
             {[
-              { label: 'BTS\nFlight Data', color: '#2563eb' },
-              { label: '→', color: '#94a3b8', isArrow: true },
-              { label: 'Open-Meteo\nWeather', color: '#0284c7' },
-              { label: '→', color: '#94a3b8', isArrow: true },
-              { label: 'Feature\nEngineering', color: '#7c3aed' },
-              { label: '→', color: '#94a3b8', isArrow: true },
-              { label: 'XGBoost\nClassifier', color: '#2563eb' },
-              { label: '+', color: '#94a3b8', isArrow: true },
-              { label: 'GBT\nRegressor', color: '#0284c7' },
-              { label: '→', color: '#94a3b8', isArrow: true },
-              { label: 'SHAP\nExplainability', color: '#d97706' },
+              { label: 'BTS\nFlight Data', color: '#2563EB' },
+              { label: '→', color: '#94A3B8', isArrow: true },
+              { label: 'Open-Meteo\nWeather', color: '#0284C7' },
+              { label: '→', color: '#94A3B8', isArrow: true },
+              { label: 'Feature\nEngineering', color: '#7C3AED' },
+              { label: '→', color: '#94A3B8', isArrow: true },
+              { label: 'XGBoost\nClassifier', color: '#2563EB' },
+              { label: '+', color: '#94A3B8', isArrow: true },
+              { label: 'GBT\nRegressor', color: '#0284C7' },
+              { label: '→', color: '#94A3B8', isArrow: true },
+              { label: 'SHAP\nExplainability', color: '#D97706' },
             ].map((node, i) =>
               node.isArrow ? (
                 <span
@@ -500,11 +553,11 @@ export default function LandingPage() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
+                  transition={{ delay: i * 0.05 }}
                   style={{
-                    background: '#f8fafc',
+                    background: '#FFFFFF',
                     border: `1.5px solid ${node.color}35`,
-                    borderRadius: 12,
+                    borderRadius: 10,
                     padding: '14px 18px',
                     textAlign: 'center',
                     margin: '6px 2px',
@@ -530,20 +583,23 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Footer ────────────────────────────────────────────────────── */}
+      {/* Footer */}
       <footer
         style={{
           padding: '32px 48px',
-          background: '#f8fafc',
+          background: '#FFFFFF',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          borderTop: '1px solid #E2E8F0',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
-        <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 15, color: '#0f172a' }}>
+        <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 15, color: '#0F172A' }}>
           AEROINTEL
         </span>
-        <p style={{ fontSize: 12, color: '#64748b' }}>
+        <p style={{ fontSize: 12, color: '#64748B' }}>
           Built on Bureau of Transportation Statistics data & Open-Meteo weather API.
           Historical analysis & probability models. Not for operational flight dispatch.
         </p>
@@ -551,3 +607,4 @@ export default function LandingPage() {
     </div>
   );
 }
+

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "classifier_v1",
+    "model_type": "classifier",
+    "model_name": "gradient_boosting",
+    "trained_at": "2026-09-07T16:40:52.978353+00:00"
+  },
+  {
+    "id": "regressor_v1",
+    "model_type": "regressor",
+    "model_name": "ridge",
+    "trained_at": "2026-09-07T16:40:55.439113+00:00"
+  }
+]
