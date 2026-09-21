@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'AeroIntel — ML-Powered Flight Delay Intelligence',
+  title: 'AeroCast — ML-Powered Flight Delay Intelligence',
   description:
-    'AeroIntel transforms real aviation and weather data into explainable flight delay intelligence for US domestic aviation.',
+    'AeroCast transforms real aviation and weather data into explainable flight delay intelligence for US domestic aviation.',
   keywords: ['flight delay prediction', 'aviation intelligence', 'machine learning', 'airport analytics'],
   openGraph: {
-    title: 'AeroIntel — Predict Delays. Understand the Skies.',
+    title: 'AeroCast — Predict Delays. Understand the Skies.',
     description: 'ML-powered flight delay intelligence for US domestic aviation.',
     type: 'website',
   },

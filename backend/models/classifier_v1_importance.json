@@ -1,62 +1,62 @@
 [
   {
     "feature": "sched_dep_hour",
-    "shap_mean_abs": 0.148012
-  },
-  {
-    "feature": "hist_origin_avg_delay",
-    "shap_mean_abs": 0.130142
-  },
-  {
-    "feature": "distance",
-    "shap_mean_abs": 0.120801
-  },
-  {
-    "feature": "hist_dest_delay_rate",
-    "shap_mean_abs": 0.114988
+    "shap_mean_abs": 0.190294
   },
   {
     "feature": "hist_airline_delay_rate",
-    "shap_mean_abs": 0.114691
-  },
-  {
-    "feature": "hist_congestion_proxy",
-    "shap_mean_abs": 0.111041
+    "shap_mean_abs": 0.099683
   },
   {
     "feature": "hist_origin_delay_rate",
-    "shap_mean_abs": 0.105756
+    "shap_mean_abs": 0.096771
   },
   {
-    "feature": "month",
-    "shap_mean_abs": 0.055761
+    "feature": "hist_origin_avg_delay",
+    "shap_mean_abs": 0.083157
   },
   {
-    "feature": "day_of_week",
-    "shap_mean_abs": 0.050526
+    "feature": "hist_dest_delay_rate",
+    "shap_mean_abs": 0.082223
   },
   {
-    "feature": "hist_route_delay_rate",
-    "shap_mean_abs": 0.037686
+    "feature": "distance",
+    "shap_mean_abs": 0.081031
   },
   {
-    "feature": "is_weekend",
-    "shap_mean_abs": 0.010596
-  },
-  {
-    "feature": "wx_precip",
-    "shap_mean_abs": 0.0
-  },
-  {
-    "feature": "wx_wind_speed",
-    "shap_mean_abs": 0.0
+    "feature": "hist_congestion_proxy",
+    "shap_mean_abs": 0.079435
   },
   {
     "feature": "wx_temp",
-    "shap_mean_abs": 0.0
+    "shap_mean_abs": 0.072306
+  },
+  {
+    "feature": "wx_wind_speed",
+    "shap_mean_abs": 0.062416
+  },
+  {
+    "feature": "hist_route_delay_rate",
+    "shap_mean_abs": 0.045807
+  },
+  {
+    "feature": "wx_precip",
+    "shap_mean_abs": 0.036248
+  },
+  {
+    "feature": "month",
+    "shap_mean_abs": 0.031822
+  },
+  {
+    "feature": "day_of_week",
+    "shap_mean_abs": 0.028623
+  },
+  {
+    "feature": "is_weekend",
+    "shap_mean_abs": 0.006035
   },
   {
     "feature": "wx_visibility",
-    "shap_mean_abs": 0.0
+    "shap_mean_abs": 0.004149
   }
 ]

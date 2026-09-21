@@ -109,7 +109,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <span style={{ color: 'white', fontSize: 14, fontWeight: 700 }}>✈</span>
               </div>
               <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 16, color: '#0f172a' }}>
-                AEROINTEL
+                AEROCAST
               </span>
             </Link>
             <div style={{ width: 1, height: 20, background: 'var(--color-border)' }} />
@@ -169,7 +169,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div style={{ width: 26, height: 26, background: 'linear-gradient(135deg, #3d7eff, #06b6d4)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ color: 'white', fontSize: 12, fontWeight: 700 }}>✈</span>
           </div>
-          <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 15, color: '#0f172a' }}>AEROINTEL</span>
+          <span style={{ fontFamily: 'Space Grotesk', fontWeight: 700, fontSize: 15, color: '#0f172a' }}>AEROCAST</span>
         </Link>
 
         <button
@@ -224,7 +224,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     letterSpacing: '-0.01em',
                   }}
                 >
-                  AEROINTEL
+                  AEROCAST
                 </div>
                 <div style={{ fontSize: 9, color: 'var(--color-text-muted)', letterSpacing: '0.06em', fontWeight: 600 }}>
                   DATA & ANALYTICS PORTAL
